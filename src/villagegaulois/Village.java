@@ -8,11 +8,12 @@ public class Village {
 	private Chef chef;
 	private Gaulois[] villageois;
 	private int nbVillageois = 0;
+	private MarcheInterne marche;
 
-	public Village(String nom, int nbVillageoisMaximum) {
+	public Village(String nom, int nbVillageoisMaximum,int nbetal) {
 		this.nom = nom;
 		villageois = new Gaulois[nbVillageoisMaximum];
-		
+		MarcheInterne marche=new MarcheInterne(nbetal);
 	}
 
 	public String getNom() {
@@ -21,6 +22,12 @@ public class Village {
 
 	public void setChef(Chef chef) {
 		this.chef = chef;
+	}
+	
+	public String installerVendeur(Gaulois vendeur,String produit, int nbProduit) {
+		StringBuilder texte=new StringBuilder();
+		texte.append(vendeur.getNom()+ " cherche un endroit pour vendre "+nbProduit+" "+produit+".\n");
+		return texte.toString();
 	}
 
 	public void ajouterHabitant(Gaulois gaulois) {
